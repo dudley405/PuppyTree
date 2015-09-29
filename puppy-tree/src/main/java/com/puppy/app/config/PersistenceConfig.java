@@ -26,8 +26,6 @@ import java.util.Properties;
 public class PersistenceConfig {
     @Autowired
     private Environment env;
-    @Value("${init-db:false}")
-    private String initDatabase;
 
     @Bean
     public PlatformTransactionManager transactionManager() {

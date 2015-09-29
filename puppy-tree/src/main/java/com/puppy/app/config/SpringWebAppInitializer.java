@@ -2,10 +2,8 @@ package com.puppy.app.config;
 
 import javax.servlet.Filter;
 
-import com.puppy.app.config.WebMvcConfig;
 import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-import com.puppy.app.config.AppConfig;
 
 public class SpringWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
@@ -15,7 +13,7 @@ public class SpringWebAppInitializer extends AbstractAnnotationConfigDispatcherS
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class<?>[]{WebMvcConfig.class};
+        return new Class<?>[]{AppConfig.class};
     }
 
     @Override

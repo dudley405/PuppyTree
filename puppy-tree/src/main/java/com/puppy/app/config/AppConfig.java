@@ -3,6 +3,7 @@ package com.puppy.app.config;
 import java.util.Properties;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
@@ -17,9 +18,10 @@ import org.springframework.core.env.Environment;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+@EnableAutoConfiguration
 @Configuration
-@ComponentScan(basePackages = {"com.puppy"}, excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX, pattern = {"com.puppy.web.*"}))
 @PropertySource(value = {"classpath:application.properties"})
+@ComponentScan("com.puppy")
 @EnableScheduling
 @EnableAspectJAutoProxy
 @EnableCaching

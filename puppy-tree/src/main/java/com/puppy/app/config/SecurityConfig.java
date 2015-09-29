@@ -21,22 +21,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder registry) throws Exception {
-      /*  registry.inMemoryAuthentication().
+      registry.inMemoryAuthentication().
                 withUser("siva").
                 password("siva").
                 roles("USER").
                 and().
                 withUser("admin").
                 password("admin").
-                roles("ADMIN", "USER");*/
-        registry.jdbcAuthentication().dataSource(dataSource);
-        registry.userDetailsService(customUserDetailsService);
+                roles("ADMIN", "USER");
+        //registry.jdbcAuthentication().dataSource(dataSource);
+        //registry.userDetailsService(customUserDetailsService);
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/resources/**");
+        web.ignoring().antMatchers("/css/**","/fonts/**","/libs/**");
     }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -54,6 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 loginPage("/login/form").
                 loginProcessingUrl("/login").
                 failureUrl("/login/form?error").
+                defaultSuccessUrl("/welcome").
                 permitAll();
     }
 }
